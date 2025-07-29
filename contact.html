@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Rubies Micro Insurance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'ui-sans-serif', 'system-ui'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+<div class="flex flex-col w-full min-h-screen bg-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 md:pt-10 pb-4 sm:pb-6 md:pb-8">
+    <!-- Hero Section with Navigation -->
+    <section class="w-full relative overflow-hidden rounded-2xl sm:rounded-3xl mb-8 sm:mb-12 md:mb-16" style="background-color: #F7E3E7;">
+        <!-- Noise Texture Overlay -->
+        <div class="absolute inset-0 opacity-20" style="background-image: url('assets/img/Noise & Texture.png'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
+
+        <div class="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12">
+            <!-- Navigation Bar -->
+            <nav class="flex items-center justify-between mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-10 sm:h-12 md:h-14 w-auto">
+                </div>
+
+                <!-- Navigation Menu -->
+                <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+                    <a href="index.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">About Us</a>
+                    <div class="relative group">
+                        <a href="products.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30 flex items-center gap-1">
+                            Products
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+
+                        <!-- Mega Menu Dropdown -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] drop-shadow-2xl">
+                            <div class="p-6">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <!-- Motorcycle/Tricycle -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">🏍️</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Motorcycle/Tricycle</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Tricycle and motorcycle insurance against accident</p>
+                                            <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- Tenant's Guarantee -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">🏠</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Tenant's Guarantee {10G}</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Savings Policy to enable the insured save towards their rents</p>
+                                            <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- Edcare -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">🎓</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Edcare</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Cover for the education of a child in the event of death, disability or Job loss of the Parent/Guardian</p>
+                                            <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- Credit Life -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">💳</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Credit Life</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Cover for Creditors in the event of Death of the Debtor</p>
+                                            <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- Travellers Policy -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">🚗</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Travellers Policy</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Cover for the traveller in the event of an accident during a road trip</p>
+                                            <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- Rubies Shield -->
+                                    <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                            <span class="text-white text-lg">🛡️</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 text-sm mb-1">Rubies Shield</h4>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Cover the insured against losses due to Fire and/or Burglary</p>
+                                            <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="media.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Media</a>
+                    <a href="claims.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Claims</a>
+                    <a href="contact.html" class="font-medium text-sm xl:text-base relative z-30" style="color: #CB4662;">
+                        Contact
+                        <div class="absolute -bottom-1 left-0 w-full h-0.5 rounded-full" style="background-color: #CB4662;"></div>
+                    </a>
+                </div>
+
+                <!-- CTA Button -->
+                <button class="bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 text-xs sm:text-sm font-medium transition-colors">
+                    Get Started →
+                </button>
+            </nav>
+
+            <!-- Page Title -->
+            <div class="text-center py-12 sm:py-16 md:py-20 relative z-20">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                    Contact Us
+                </h1>
+                <div class="flex items-center justify-center gap-2 text-sm text-gray-600">
+                    <a href="index.html" class="hover:text-gray-900">Home</a>
+                    <span>/</span>
+                    <span style="color: #CB4662;">Contact</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex flex-col w-full">
+        <!-- Contact Information -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16">
+                <div class="bg-pink-100 text-pink-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm inline-block">
+                    Get In Touch
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    We're Here To Help
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto">
+                    Have questions about our insurance products or need assistance with your policy?
+                    Our friendly team is ready to help you find the right solution.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-16">
+                <!-- Phone -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #CB4662;">
+                        <span class="text-white text-2xl">📞</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Speak with our customer service team
+                    </p>
+                    <a href="tel:+2348012345678" class="text-sm font-medium hover:underline" style="color: #CB4662;">
+                        +234 801 234 5678
+                    </a>
+                    <p class="text-xs text-gray-500 mt-1">Mon-Fri 8AM-6PM</p>
+                </div>
+
+                <!-- Email -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #CB4662;">
+                        <span class="text-white text-2xl">✉️</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Send us a message anytime
+                    </p>
+                    <a href="mailto:support@rubiesmicroinsurance.com" class="text-sm font-medium hover:underline" style="color: #CB4662;">
+                        support@rubies.com
+                    </a>
+                    <p class="text-xs text-gray-500 mt-1">24-hour response time</p>
+                </div>
+
+                <!-- Office -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #CB4662;">
+                        <span class="text-white text-2xl">📍</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Visit Us</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Come to our office location
+                    </p>
+                    <address class="text-sm font-medium not-italic" style="color: #CB4662;">
+                        123 Insurance Plaza<br>
+                        Victoria Island, Lagos
+                    </address>
+                    <p class="text-xs text-gray-500 mt-1">Mon-Fri 9AM-5PM</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8 sm:mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Send Us A Message
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-600">
+                        Fill out the form below and we'll get back to you as soon as possible
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    First Name *
+                                </label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Enter your first name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Last Name *
+                                </label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Enter your last name">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Email Address *
+                                </label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Phone Number
+                                </label>
+                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Subject *
+                            </label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                <option>Select a subject</option>
+                                <option>General Inquiry</option>
+                                <option>Motorcycle/Tricycle Insurance</option>
+                                <option>Tenant's Guarantee {10G}</option>
+                                <option>Edcare</option>
+                                <option>Credit Life</option>
+                                <option>Travellers Policy</option>
+                                <option>Rubies Shield</option>
+                                <option>Claims Support</option>
+                                <option>Technical Support</option>
+                                <option>Partnership Opportunities</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Message *
+                            </label>
+                            <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="newsletter" class="w-4 h-4 rounded border-gray-300 focus:ring-pink-500">
+                            <label for="newsletter" class="text-sm text-gray-600">
+                                I would like to receive updates and promotional emails from Rubies
+                            </label>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button type="submit" class="flex-1 text-white py-3 px-6 rounded-lg font-medium transition-colors" style="background-color: #CB4662;">
+                                Send Message
+                            </button>
+                            <button type="reset" class="flex-1 bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-300 transition-colors">
+                                Clear Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                    Find quick answers to common questions about our services
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="border border-gray-200 rounded-lg">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50" onclick="toggleFAQ(1)">
+                        <span class="font-medium text-gray-900">How do I get a quote for insurance?</span>
+                        <span class="text-pink-600" id="faq-icon-1">+</span>
+                    </button>
+                    <div class="px-6 pb-4 hidden" id="faq-content-1">
+                        <p class="text-gray-600 text-sm">
+                            You can get a quote by downloading our mobile app, visiting our website, or calling our customer service team.
+                            The process is quick and easy, taking just a few minutes to complete.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50" onclick="toggleFAQ(2)">
+                        <span class="font-medium text-gray-900">What documents do I need to file a claim?</span>
+                        <span class="text-pink-600" id="faq-icon-2">+</span>
+                    </button>
+                    <div class="px-6 pb-4 hidden" id="faq-content-2">
+                        <p class="text-gray-600 text-sm">
+                            Required documents vary by claim type but typically include photos of damage, police reports (if applicable),
+                            medical records, and your policy information. Our team will guide you through the specific requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50" onclick="toggleFAQ(3)">
+                        <span class="font-medium text-gray-900">How long does claim processing take?</span>
+                        <span class="text-pink-600" id="faq-icon-3">+</span>
+                    </button>
+                    <div class="px-6 pb-4 hidden" id="faq-content-3">
+                        <p class="text-gray-600 text-sm">
+                            Most claims are processed within 5-7 business days once all required documentation is submitted.
+                            Complex claims may take longer, but we'll keep you updated throughout the process.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50" onclick="toggleFAQ(4)">
+                        <span class="font-medium text-gray-900">Can I modify my policy after purchase?</span>
+                        <span class="text-pink-600" id="faq-icon-4">+</span>
+                    </button>
+                    <div class="px-6 pb-4 hidden" id="faq-content-4">
+                        <p class="text-gray-600 text-sm">
+                            Yes, you can modify your policy coverage, add beneficiaries, or update personal information.
+                            Contact our customer service team or use our mobile app to make changes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-gray-50">
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Find Our Office
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600">
+                    Visit us at our headquarters in Lagos
+                </p>
+            </div>
+
+            <div class="bg-gray-200 rounded-2xl h-64 sm:h-80 md:h-96 flex items-center justify-center">
+                <div class="text-center">
+                    <span class="text-6xl mb-4 block">🗺️</span>
+                    <p class="text-gray-600 font-medium">Interactive Map</p>
+                    <p class="text-sm text-gray-500">123 Insurance Plaza, Victoria Island, Lagos</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-white py-8 sm:py-12 md:py-16">
+        <div class="border-t border-gray-200 pt-8 sm:pt-12 px-4">
+            <div class="flex flex-col items-center gap-6 sm:gap-8">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-8 sm:h-10 w-auto">
+                </div>
+
+                <!-- Contact Info -->
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+                    <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
+                        <span class="mr-2">📞</span>
+                        +001 6520 698 00
+                    </button>
+                    <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
+                        <span class="mr-2">✉️</span>
+                        support@rubiesmicroinsurance.com
+                    </button>
+                    <div class="flex gap-2 justify-center">
+                        <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                            <img src="public/Facebook.png" alt="Facebook" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                        </button>
+                        <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                            <img src="public/twitter 1.png" alt="Twitter" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                        </button>
+                        <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                            <img src="public/instagram 1.png" alt="Instagram" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                        </button>
+                        <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                            <img src="public/Linkedin.png" alt="LinkedIn" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="flex flex-col lg:flex-row justify-between items-center w-full gap-4">
+                    <p class="text-sm text-gray-500">
+                        © 2023 Rubies. All rights reserved.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        <a href="about.html" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                            About Us
+                        </a>
+                        <a href="contact.html" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                            Contact Us
+                        </a>
+                        <a href="#" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                            Terms of Use
+                        </a>
+                        <a href="#" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                            Cookie Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function toggleFAQ(index) {
+        const content = document.getElementById(`faq-content-${index}`);
+        const icon = document.getElementById(`faq-icon-${index}`);
+
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.textContent = '−';
+        } else {
+            content.classList.add('hidden');
+            icon.textContent = '+';
+        }
+    }
+</script>
+</body>
+</html>

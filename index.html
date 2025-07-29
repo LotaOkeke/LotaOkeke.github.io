@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubies Micro Insurance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'ui-sans-serif', 'system-ui'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .mobile-menu-btn:focus {
+            outline: none;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 3px;
+            background: #1f2937;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: 1px;
+        }
+
+        .mobile-menu-btn.open .hamburger:first-child {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-btn.open .hamburger:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .mobile-menu-btn.open .hamburger:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 1rem;
+            z-index: 50;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-content {
+            padding: 1.5rem;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .mobile-nav-link:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .mobile-nav-link.active {
+            background-color: #fdf2f8;
+            color: #CB4662;
+        }
+
+        .mobile-products-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .mobile-products-toggle:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .mobile-products-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-products-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .mobile-products-menu {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-products-menu.active {
+            display: block;
+        }
+
+        .mobile-product-item {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .mobile-product-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .mobile-product-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background-color: #CB4662;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .mobile-product-details h4 {
+            font-weight: 600;
+            color: #111827;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .mobile-product-details p {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .mobile-auth-buttons {
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 1rem;
+        }
+
+        .mobile-auth-buttons button {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-auth-buttons .btn-signup {
+            background-color: #000;
+            color: white;
+            border: none;
+        }
+
+        .mobile-auth-buttons .btn-signup:hover {
+            background-color: #374151;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            .mobile-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+<div class="flex flex-col w-full min-h-screen bg-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 md:pt-10 pb-4 sm:pb-6 md:pb-8">
+    <!-- Main Content Section -->
+    <main class="flex flex-col items-start w-full bg-white">
+        <!-- Hero Section -->
+        <section class="w-full relative overflow-hidden rounded-2xl sm:rounded-3xl mb-4 sm:mb-6 md:mb-8" style="background-color: #F7E3E7;">
+            <!-- Noise Texture Overlay -->
+            <div class="absolute inset-0 opacity-20" style="background-image: url('assets/img/Noise & Texture.png'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
+
+            <div class="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12">
+                <!-- Navigation Bar -->
+                <nav class="flex items-center justify-between mb-8 sm:mb-12 md:mb-16 lg:mb-20 relative z-20">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-10 sm:h-12 md:h-14 w-auto">
+                    </div>
+
+                    <!-- Desktop Navigation Menu -->
+                    <div class="hidden lg:flex items-center gap-6 xl:gap-8 relative z-20">
+                        <a href="index.html" class="font-medium text-sm xl:text-base relative" style="color: #CB4662;">
+                            Home
+                            <div class="absolute -bottom-1 left-0 w-full h-0.5 rounded-full" style="background-color: #CB4662;"></div>
+                        </a>
+                        <a href="about.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">About Us</a>
+                        <div class="relative group">
+                            <a href="products.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors flex items-center gap-1">
+                                Products
+                                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+
+                            <!-- Mega Menu Dropdown -->
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] drop-shadow-2xl">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <!-- Motorcycle/Tricycle -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">🏍️</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Motorcycle/Tricycle</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Tricycle and motorcycle insurance against accident</p>
+                                                <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- Tenant's Guarantee -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">🏠</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Tenant's Guarantee {10G}</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Savings Policy to enable the insured save towards their rents</p>
+                                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- Edcare -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">🎓</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Edcare</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Cover for the education of a child in the event of death, disability or Job loss of the Parent/Guardian</p>
+                                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- Credit Life -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">💳</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Credit Life</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Cover for Creditors in the event of Death of the Debtor</p>
+                                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- Travellers Policy -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">🚗</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Travellers Policy</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Cover for the traveller in the event of an accident during a road trip</p>
+                                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- Rubies Shield -->
+                                        <a href="claims.html" class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                                <span class="text-white text-lg">🛡️</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Rubies Shield</h4>
+                                                <p class="text-xs text-gray-600 leading-relaxed">Cover the insured against losses due to Fire and/or Burglary</p>
+                                                <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="media.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Media</a>
+                        <a href="claims.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Claims</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Contact</a>
+                    </div>
+
+                    <!-- Mobile Menu Button & CTA -->
+                    <div class="flex items-center gap-3 lg:hidden">
+                        <button class="bg-black text-white px-3 py-2 rounded-full hover:bg-gray-800 text-xs font-medium transition-colors">
+                            Get Started →
+                        </button>
+                        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                            <span class="hamburger"></span>
+                            <span class="hamburger"></span>
+                            <span class="hamburger"></span>
+                        </button>
+                    </div>
+
+                    <!-- Desktop CTA Button -->
+                    <button class="hidden lg:block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 text-xs sm:text-sm font-medium transition-colors relative z-20">
+                        Get Started →
+                    </button>
+
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu" id="mobileMenu">
+                        <div class="mobile-menu-content">
+                            <a href="index.html" class="mobile-nav-link active" onclick="closeMobileMenu()">Home</a>
+                            <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()">About Us</a>
+
+                            <!-- Mobile Products Dropdown -->
+                            <div>
+                                <button class="mobile-products-toggle" onclick="toggleMobileProducts()">
+                                    <span>Products</span>
+                                    <svg class="mobile-products-icon" id="mobileProductsIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="mobile-products-menu" id="mobileProductsMenu">
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">🏍️</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Motorcycle/Tricycle</h4>
+                                            <p>Insurance against accident</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">🏠</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Tenant's Guarantee</h4>
+                                            <p>Savings for rent</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">🎓</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Edcare</h4>
+                                            <p>Education coverage</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">💳</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Credit Life</h4>
+                                            <p>Creditor coverage</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">🚗</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Travellers Policy</h4>
+                                            <p>Travel accident coverage</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                                        <div class="mobile-product-icon">
+                                            <span class="text-white">🛡️</span>
+                                        </div>
+                                        <div class="mobile-product-details">
+                                            <h4>Rubies Shield</h4>
+                                            <p>Fire & burglary coverage</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a href="media.html" class="mobile-nav-link" onclick="closeMobileMenu()">Media</a>
+                            <a href="claims.html" class="mobile-nav-link" onclick="closeMobileMenu()">Claims</a>
+                            <a href="contact.html" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+
+                            <div class="mobile-auth-buttons">
+                                <button class="btn-signup">
+                                    Get Started →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Hero Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center relative z-20">
+                    <div class="space-y-6 relative z-20">
+                        <div class="bg-white/80 text-pink-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium inline-block">
+                            News! Your Insurance Solution 🔥
+                        </div>
+
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                            Simple, Reliable Coverage
+                            <br>
+                            For What Matters Most
+                        </h1>
+
+                        <p class="text-sm sm:text-base text-gray-700 leading-relaxed max-w-lg">
+                            Rubies Micro Insurance offers affordable and flexible insurance solutions
+                            tailored to your lifestyle and business. With fast claims, seamless digital
+                            access, and support you can trust, we make insurance easy—so
+                            you can focus on living.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="bg-black text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:bg-gray-800 text-sm font-medium transition-colors">
+                                Get Started Now →
+                            </button>
+                            <button class="px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border border-gray-400 text-gray-700 text-sm font-medium bg-transparent hover:bg-gray-50 transition-colors">
+                                Learn More →
+                            </button>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 pt-6">
+                            <div class="flex items-center gap-3">
+                                <div class="flex -space-x-2">
+                                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="User">
+                                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" alt="User">
+                                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="User">
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900 text-sm">2,291</div>
+                                    <div class="text-xs text-gray-600">Happy Customers</div>
+                                </div>
+                            </div>
+
+                            <div class="sm:border-l border-gray-400 sm:pl-6">
+                                <div class="font-bold text-gray-900 text-sm">4.8/5</div>
+                                <div class="flex items-center gap-1">
+                                    <span class="text-yellow-400 text-xs">⭐</span>
+                                    <span class="text-yellow-400 text-xs">⭐</span>
+                                    <span class="text-yellow-400 text-xs">⭐</span>
+                                    <span class="text-yellow-400 text-xs">⭐</span>
+                                    <span class="text-yellow-400 text-xs">⭐</span>
+                                    <span class="text-xs text-gray-600 ml-1">Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Image -->
+                    <div class="relative z-20">
+                        <div class="relative flex justify-center items-end h-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
+                            <img src="assets/img/hero mockup.png" alt="Hero mockup" class="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl h-full object-cover object-bottom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section class="w-full py-8 sm:py-12 md:py-16 bg-white">
+            <div>
+                <h2 class="text-center text-xl sm:text-2xl font-bold text-gray-900 mb-8 sm:mb-12">
+                    Clients Who Trust Us.
+                </h2>
+                <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-12 opacity-60">
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400">Jio</div>
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400">Razorpay</div>
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400">Dropbox</div>
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400 hidden sm:block">Contentful</div>
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400 hidden md:block">Culture Amp</div>
+                    <div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-400 hidden lg:block">Dropbox</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white rounded-2xl sm:rounded-3xl">
+            <div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center px-4 sm:px-6 md:px-8">
+                    <div class="relative">
+                        <img src="assets/img/About image.png" alt="About Rubies Micro Insurance" class="w-full h-64 sm:h-80 md:h-96 object-contain rounded-2xl">
+                    </div>
+
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="bg-pink-100 text-pink-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm inline-block">
+                            About Rubies Micro-Insurance
+                        </div>
+
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                            Smarter Insurance,
+                            <br>
+                            Built For You
+                        </h2>
+
+                        <p class="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+                            Rubies Micro Insurance is redefining how Nigerians experience insurance—making
+                            it simpler, faster, and more accessible for everyone. Powered by people and smart
+                            technology, we're here to support you when it matters most.
+                        </p>
+
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center" style="background-color: #CB4662;">
+                                    <span class="text-white text-sm">✓</span>
+                                </div>
+                                <span class="text-sm sm:text-base text-gray-900 font-medium">Claim Settlement</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center" style="background-color: #CB4662;">
+                                    <span class="text-white text-sm">✓</span>
+                                </div>
+                                <span class="text-sm sm:text-base text-gray-900 font-medium">Tailored Solutions</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center" style="background-color: #CB4662;">
+                                    <span class="text-white text-sm">✓</span>
+                                </div>
+                                <span class="text-sm sm:text-base text-gray-900 font-medium">Ease of Buying</span>
+                            </div>
+                        </div>
+
+                        <button class="bg-black text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:bg-gray-800 text-sm sm:text-base transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insurance Solutions Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white">
+            <div>
+                <div class="text-center mb-8 sm:mb-12 md:mb-16">
+                    <div class="bg-pink-100 text-pink-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm inline-block">
+                        Our Insurance Solutions
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-4">
+                        A Suite Of Insurance For Life,
+                        <br>
+                        Property, Business, And Travels
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-center px-4 sm:px-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6 sm:space-y-8">
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">🏍️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Motorcycle/Tricycle</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Tricycle and motorcycle insurance against accident</p>
+                                <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                            </div>
+                        </a>
+
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">🏠</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Tenant's Guarantee {10G}</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Savings Policy to enable the insured save towards their rents</p>
+                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                            </div>
+                        </a>
+
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">🎓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Edcare</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Cover for the education of a child in the event of death, disability or Job loss of the Parent/Guardian</p>
+                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Center - Phone Mockup -->
+                    <div class="flex justify-center order-first lg:order-none">
+                        <div class="relative">
+                            <img src="assets/img/our insurance image.png" alt="Our Insurance Solutions" class="w-64 h-96 sm:w-72 sm:h-[28rem] md:w-80 md:h-[32rem] lg:w-96 lg:h-[36rem] object-contain">
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6 sm:space-y-8">
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">💳</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Credit Life</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Cover for Creditors in the event of Death of the Debtor</p>
+                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                            </div>
+                        </a>
+
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">🚗</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Travellers Policy</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Cover for the traveller in the event of an accident during a road trip</p>
+                                <span class="text-xs text-yellow-600 font-medium">Life Insurance</span>
+                            </div>
+                        </a>
+
+                        <a href="claims.html" class="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-lg transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #CB4662;">
+                                <span class="text-white text-2xl">🛡️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Rubies Shield</h3>
+                                <p class="text-sm sm:text-base text-gray-600 mb-1">Cover the insured against losses due to Fire and/or Burglary</p>
+                                <span class="text-xs text-yellow-600 font-medium">General Insurance</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white">
+            <div>
+                <div class="text-center mb-8 sm:mb-12 md:mb-16 px-4">
+                    <div class="bg-pink-100 text-pink-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm inline-block">
+                        How It Work 👋
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                        Make Your Device Manage
+                        <br>
+                        All Your Insurance Plans!
+                    </h2>
+                </div>
+
+                <div class="relative px-4 sm:px-6">
+                    <!-- Curved connecting lines -->
+                    <div class="hidden md:block absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
+                        <svg class="w-full h-24" viewBox="0 0 800 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- First curve -->
+                            <path d="M50 50 Q200 20 350 50" stroke="#F8BBD9" stroke-width="3" fill="none" stroke-dasharray="8,8"/>
+                            <!-- Second curve -->
+                            <path d="M450 50 Q600 20 750 50" stroke="#F8BBD9" stroke-width="3" fill="none" stroke-dasharray="8,8"/>
+                            <!-- Dots at connection points -->
+                            <circle cx="50" cy="50" r="6" fill="#CB4662"/>
+                            <circle cx="400" cy="50" r="6" fill="#CB4662"/>
+                            <circle cx="750" cy="50" r="6" fill="#CB4662"/>
+                        </svg>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 relative z-10">
+                        <div class="text-center">
+                            <div class="mb-6">
+                                <div class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-medium inline-block mb-4">
+                                    STEP - 01
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Download App</h3>
+                                <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Download and install the app<br>
+                                    from AppStore or PlayStore
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="mb-6">
+                                <div class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-medium inline-block mb-4">
+                                    STEP - 02
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Create Account</h3>
+                                <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Sign up and subscribe to an<br>
+                                    insurance plan
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="mb-6">
+                                <div class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-medium inline-block mb-4">
+                                    STEP - 03
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Make a Claim</h3>
+                                <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Make a claim and get your<br>
+                                    money faster
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Download Section -->
+        <section class="w-full text-white relative overflow-hidden rounded-2xl sm:rounded-3xl" style="background-color: #CB4662;">
+            <div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-end">
+                    <div class="space-y-6 sm:space-y-8 px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+                        <div class="bg-white/20 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm inline-block">
+                            Our App
+                        </div>
+
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                            Download Our App And Start
+                            <br>
+                            Managing Your Insurance Today!
+                        </h2>
+
+                        <p class="text-sm sm:text-base md:text-lg opacity-90">
+                            Manage your policies, file claims, get quotes, and stay protected—anytime,
+                            anywhere. Download the Rubies Micro Insurance app for fast, simple, and
+                            secure insurance at your fingertips.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://apps.apple.com/ng/app/rubies/id1458430556" target="_blank" rel="noopener noreferrer">
+                                <img src="public/appstore.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity">
+                            </a>
+                            <img src="public/playstore.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center items-end h-full">
+                        <img src="public/our app.png" alt="Rubies App" class="w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] object-contain object-bottom">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="w-full py-12 sm:py-16 md:py-20 bg-white">
+            <div>
+                <div class="text-center mb-8 sm:mb-12 md:mb-16 px-4">
+                    <div class="bg-pink-100 text-pink-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm inline-block">
+                        Client Feedback
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                        What Our Customers Are Saying
+                    </h2>
+                </div>
+
+                <div class="flex overflow-x-auto gap-6 px-4 pb-4" id="testimonials-carousel">
+                    <div class="min-w-72 sm:min-w-80 h-72 sm:h-80 md:h-96 relative overflow-hidden rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 text-white">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                                <div class="flex items-center gap-1 mb-3">
+                                    <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <h3 class="font-bold text-base sm:text-lg mb-2">Tosin O.</h3>
+                                <p class="text-xs sm:text-sm opacity-90">I love that I can manage all my insurance from one app. Super convenient!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="min-w-72 sm:min-w-80 h-72 sm:h-80 md:h-96 relative overflow-hidden rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 text-white">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                                <div class="flex items-center gap-1 mb-3">
+                                    <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <h3 class="font-bold text-base sm:text-lg mb-2">Fatima K.</h3>
+                                <p class="text-xs sm:text-sm opacity-90">Their customer service team is responsive and truly helpful. Highly recommend.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="min-w-72 sm:min-w-80 h-72 sm:h-80 md:h-96 relative overflow-hidden rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 text-white">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                                <div class="flex items-center gap-1 mb-3">
+                                    <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <h3 class="font-bold text-base sm:text-lg mb-2">Chinedu A.</h3>
+                                <p class="text-xs sm:text-sm opacity-90">Rubies made my claim process so smooth, I couldn't believe how fast it was!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="min-w-72 sm:min-w-80 h-72 sm:h-80 md:h-96 relative overflow-hidden rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 text-white">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                                <div class="flex items-center gap-1 mb-3">
+                                    <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <h3 class="font-bold text-base sm:text-lg mb-2">Susan M.</h3>
+                                <p class="text-xs sm:text-sm opacity-90">Affordable plans and clear terms. I finally understand what I'm paying for.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="min-w-72 sm:min-w-80 h-72 sm:h-80 md:h-96 relative overflow-hidden rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 text-white">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                                <div class="flex items-center gap-1 mb-3">
+                                    <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <h3 class="font-bold text-base sm:text-lg mb-2">Bayo S.</h3>
+                                <p class="text-xs sm:text-sm opacity-90">After a burglary at my shop, Rubies handled everything quickly. So grateful!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 mt-6 sm:mt-8">
+                    <button onclick="scrollTestimonials('left')" class="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors">
+                        <span class="text-gray-600">←</span>
+                    </button>
+                    <button onclick="scrollTestimonials('right')" class="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors">
+                        <span class="text-gray-600">→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-white py-8 sm:py-12 md:py-16">
+        <div>
+            <!-- Join Section -->
+            <div class="text-center mb-8 sm:mb-12 md:mb-16 px-4">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Join Rubies And Experience Greatness
+                </h2>
+                <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8">
+                    Chat, send money, pay bills, and more with Rubies - the all-in-one app
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8 sm:mb-12 md:mb-16">
+                    <a href="https://apps.apple.com/ng/app/rubies/id1458430556" target="_blank" rel="noopener noreferrer" class="mx-auto sm:mx-0">
+                        <img src="public/appstore.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity">
+                    </a>
+                    <img src="public/playstore.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity mx-auto sm:mx-0">
+                </div>
+            </div>
+
+            <!-- Footer Content -->
+            <div class="border-t border-gray-200 pt-8 sm:pt-12 px-4">
+                <div class="flex flex-col items-center gap-6 sm:gap-8">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-8 sm:h-10 w-auto">
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+                        <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
+                            <span class="mr-2">📞</span>
+                            +001 6520 698 00
+                        </button>
+                        <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
+                            <span class="mr-2">✉️</span>
+                            support@rubiesmicroinsurance.com
+                        </button>
+                        <div class="flex gap-2 justify-center">
+                            <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                <img src="public/Facebook.png" alt="Facebook" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                            </button>
+                            <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                <img src="public/twitter 1.png" alt="Twitter" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                            </button>
+                            <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                <img src="public/instagram 1.png" alt="Instagram" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                            </button>
+                            <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                <img src="public/Linkedin.png" alt="LinkedIn" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Footer Links -->
+                    <div class="flex flex-col lg:flex-row justify-between items-center w-full gap-4">
+                        <p class="text-sm text-gray-500">
+                            © 2023 Rubies. All rights reserved.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                            <a href="about.html" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                                About Us
+                            </a>
+                            <a href="contact.html" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                                Contact Us
+                            </a>
+                            <a href="#" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                                Terms of Use
+                            </a>
+                            <a href="#" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                                Cookie Policy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+        if (mobileMenu && mobileMenuBtn) {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('open');
+        }
+    }
+
+    function closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+        if (mobileMenu && mobileMenuBtn) {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('open');
+        }
+    }
+
+    function toggleMobileProducts() {
+        const productsMenu = document.getElementById('mobileProductsMenu');
+        const productsIcon = document.getElementById('mobileProductsIcon');
+
+        if (productsMenu && productsIcon) {
+            productsMenu.classList.toggle('active');
+            productsIcon.classList.toggle('rotated');
+        }
+    }
+
+    // Testimonials carousel functionality
+    function scrollTestimonials(direction) {
+        const carousel = document.getElementById('testimonials-carousel');
+        const scrollAmount = 320; // Width of one testimonial card plus gap
+
+        if (direction === 'left') {
+            carousel.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        } else {
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Auto-scroll testimonials every 5 seconds
+    function autoScrollTestimonials() {
+        const carousel = document.getElementById('testimonials-carousel');
+        if (!carousel) return;
+
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        if (carousel.scrollLeft >= maxScroll) {
+            carousel.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            scrollTestimonials('right');
+        }
+    }
+
+    // Initialize auto-scroll for testimonials
+    let testimonialInterval;
+
+    function startTestimonialAutoScroll() {
+        testimonialInterval = setInterval(autoScrollTestimonials, 5000);
+    }
+
+    function stopTestimonialAutoScroll() {
+        clearInterval(testimonialInterval);
+    }
+
+    // Initialize everything when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Start testimonial auto-scroll if carousel exists
+        const testimonialCarousel = document.getElementById('testimonials-carousel');
+        if (testimonialCarousel) {
+            startTestimonialAutoScroll();
+
+            // Pause auto-scroll when user hovers over testimonials
+            testimonialCarousel.addEventListener('mouseenter', stopTestimonialAutoScroll);
+            testimonialCarousel.addEventListener('mouseleave', startTestimonialAutoScroll);
+        }
+    });
+</script>
+</body>
+</html>

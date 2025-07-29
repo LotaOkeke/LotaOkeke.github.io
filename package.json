@@ -1,0 +1,15 @@
+{
+  "name": "rubies-micro-insurance",
+  "version": "1.0.0",
+  "description": "Rubies Micro Insurance Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "build": "echo 'Static HTML build complete'",
+    "preview": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

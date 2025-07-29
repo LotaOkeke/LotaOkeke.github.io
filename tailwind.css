@@ -1,0 +1,279 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --background-blur-lg: ;
+  --background-blur-sm: ;
+  --basewhite: rgba(255, 255, 255, 1);
+  --black: rgba(0, 0, 0, 1);
+  --display-sm-semibold-font-family: "Inter", Helvetica;
+  --display-sm-semibold-font-size: 30px;
+  --display-sm-semibold-font-style: normal;
+  --display-sm-semibold-font-weight: 600;
+  --display-sm-semibold-letter-spacing: 0px;
+  --display-sm-semibold-line-height: 38px;
+  --display-xl-semibold-font-family: "Inter", Helvetica;
+  --display-xl-semibold-font-size: 60px;
+  --display-xl-semibold-font-style: normal;
+  --display-xl-semibold-font-weight: 600;
+  --display-xl-semibold-letter-spacing: -1.2px;
+  --display-xl-semibold-line-height: 72px;
+  --gray-100: rgba(242, 244, 247, 1);
+  --gray-200: rgba(234, 236, 240, 1);
+  --gray-300: rgba(208, 213, 221, 1);
+  --gray-400: rgba(152, 162, 179, 1);
+  --gray-500: rgba(102, 112, 133, 1);
+  --gray-600: rgba(71, 84, 103, 1);
+  --gray-700: rgba(52, 64, 84, 1);
+  --gray-800: rgba(29, 41, 57, 1);
+  --gray-900: rgba(16, 24, 40, 1);
+  --preview-themeforest-net-semantic-button-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-button-title-font-size: 16px;
+  --preview-themeforest-net-semantic-button-title-font-style: normal;
+  --preview-themeforest-net-semantic-button-title-font-weight: 600;
+  --preview-themeforest-net-semantic-button-title-letter-spacing: -0.3199999928474426px;
+  --preview-themeforest-net-semantic-button-title-line-height: 28px;
+  --preview-themeforest-net-semantic-heading-1-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-heading-1-title-font-size: 48px;
+  --preview-themeforest-net-semantic-heading-1-title-font-style: normal;
+  --preview-themeforest-net-semantic-heading-1-title-font-weight: 700;
+  --preview-themeforest-net-semantic-heading-1-title-letter-spacing: -0.9599999785423279px;
+  --preview-themeforest-net-semantic-heading-1-title-line-height: normal;
+  --preview-themeforest-net-semantic-heading-2-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-heading-2-title-font-size: 48px;
+  --preview-themeforest-net-semantic-heading-2-title-font-style: normal;
+  --preview-themeforest-net-semantic-heading-2-title-font-weight: 700;
+  --preview-themeforest-net-semantic-heading-2-title-letter-spacing: -0.9599999785423279px;
+  --preview-themeforest-net-semantic-heading-2-title-line-height: normal;
+  --preview-themeforest-net-semantic-heading-4-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-heading-4-title-font-size: 20px;
+  --preview-themeforest-net-semantic-heading-4-title-font-style: normal;
+  --preview-themeforest-net-semantic-heading-4-title-font-weight: 600;
+  --preview-themeforest-net-semantic-heading-4-title-letter-spacing: -0.4000000059604645px;
+  --preview-themeforest-net-semantic-heading-4-title-line-height: 30px;
+  --preview-themeforest-net-semantic-heading-6-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-heading-6-title-font-size: 16px;
+  --preview-themeforest-net-semantic-heading-6-title-font-style: normal;
+  --preview-themeforest-net-semantic-heading-6-title-font-weight: 600;
+  --preview-themeforest-net-semantic-heading-6-title-letter-spacing: 0px;
+  --preview-themeforest-net-semantic-heading-6-title-line-height: 23.200000762939453px;
+  --preview-themeforest-net-semantic-item-font-family: "Urbanist", Helvetica;
+  --preview-themeforest-net-semantic-item-font-size: 18px;
+  --preview-themeforest-net-semantic-item-font-style: normal;
+  --preview-themeforest-net-semantic-item-font-weight: 500;
+  --preview-themeforest-net-semantic-item-letter-spacing: -0.36000001430511475px;
+  --preview-themeforest-net-semantic-item-line-height: 28px;
+  --preview-themeforest-net-semantic-link-font-family: "Nunito", Helvetica;
+  --preview-themeforest-net-semantic-link-font-size: 16px;
+  --preview-themeforest-net-semantic-link-font-style: normal;
+  --preview-themeforest-net-semantic-link-font-weight: 700;
+  --preview-themeforest-net-semantic-link-letter-spacing: 0px;
+  --preview-themeforest-net-semantic-link-line-height: normal;
+  --preview-themeforest-net-semantic-link-title-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-semantic-link-title-font-size: 16px;
+  --preview-themeforest-net-semantic-link-title-font-style: normal;
+  --preview-themeforest-net-semantic-link-title-font-weight: 600;
+  --preview-themeforest-net-semantic-link-title-letter-spacing: 0px;
+  --preview-themeforest-net-semantic-link-title-line-height: 28px;
+  --preview-themeforest-net-urbanist-bold-font-family: "Urbanist", Helvetica;
+  --preview-themeforest-net-urbanist-bold-font-size: 24px;
+  --preview-themeforest-net-urbanist-bold-font-style: normal;
+  --preview-themeforest-net-urbanist-bold-font-weight: 700;
+  --preview-themeforest-net-urbanist-bold-letter-spacing: -0.47999998927116394px;
+  --preview-themeforest-net-urbanist-bold-line-height: 34px;
+  --preview-themeforest-net-urbanist-bold-upper-font-family: "Urbanist",
+    Helvetica;
+  --preview-themeforest-net-urbanist-bold-upper-font-size: 13px;
+  --preview-themeforest-net-urbanist-bold-upper-font-style: normal;
+  --preview-themeforest-net-urbanist-bold-upper-font-weight: 700;
+  --preview-themeforest-net-urbanist-bold-upper-letter-spacing: 0px;
+  --preview-themeforest-net-urbanist-bold-upper-line-height: normal;
+  --preview-themeforest-net-urbanist-light-font-family: "Urbanist", Helvetica;
+  --preview-themeforest-net-urbanist-light-font-size: 18px;
+  --preview-themeforest-net-urbanist-light-font-style: normal;
+  --preview-themeforest-net-urbanist-light-font-weight: 300;
+  --preview-themeforest-net-urbanist-light-letter-spacing: 0px;
+  --preview-themeforest-net-urbanist-light-line-height: normal;
+  --preview-themeforest-net-urbanist-medium-font-family: "Urbanist", Helvetica;
+  --preview-themeforest-net-urbanist-medium-font-size: 16px;
+  --preview-themeforest-net-urbanist-medium-font-style: normal;
+  --preview-themeforest-net-urbanist-medium-font-weight: 500;
+  --preview-themeforest-net-urbanist-medium-letter-spacing: -0.3199999928474426px;
+  --preview-themeforest-net-urbanist-medium-line-height: 28px;
+  --preview-themeforest-net-urbanist-regular-font-family: "Urbanist", Helvetica;
+  --preview-themeforest-net-urbanist-regular-font-size: 16px;
+  --preview-themeforest-net-urbanist-regular-font-style: normal;
+  --preview-themeforest-net-urbanist-regular-font-weight: 400;
+  --preview-themeforest-net-urbanist-regular-letter-spacing: 0px;
+  --preview-themeforest-net-urbanist-regular-line-height: 28px;
+  --previewthemeforestnetalto: rgba(211, 211, 211, 1);
+  --previewthemeforestnetcharade: rgba(36, 35, 49, 1);
+  --previewthemeforestnetgoldenrod: rgba(255, 212, 105, 1);
+  --previewthemeforestnetgray: rgba(133, 133, 133, 1);
+  --previewthemeforestnetmercury: rgba(230, 230, 230, 1);
+  --previewthemeforestnetscorpion: rgba(86, 86, 86, 1);
+  --previewthemeforestnetshark: rgba(27, 28, 32, 1);
+  --previewthemeforestnettree-poppy: rgba(255, 143, 31, 1);
+  --previewthemeforestnettulip-tree: rgba(236, 193, 50, 1);
+  --previewthemeforestnetwhite: rgba(255, 255, 255, 1);
+  --previewthemeforestnetwhite-15: rgba(255, 255, 255, 0.15);
+  --previewthemeforestnetyellow-orange: rgba(255, 182, 54, 1);
+  --primary-700: rgba(23, 92, 211, 1);
+  --shadow-lg: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px
+    rgba(16, 24, 40, 0.08);
+  --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --success-200: rgba(171, 239, 198, 1);
+  --success-50: rgba(236, 253, 243, 1);
+  --success-700: rgba(6, 118, 71, 1);
+  --text-lg-semibold-font-family: "Inter", Helvetica;
+  --text-lg-semibold-font-size: 18px;
+  --text-lg-semibold-font-style: normal;
+  --text-lg-semibold-font-weight: 600;
+  --text-lg-semibold-letter-spacing: 0px;
+  --text-lg-semibold-line-height: 28px;
+  --text-md-medium-font-family: "Inter", Helvetica;
+  --text-md-medium-font-size: 16px;
+  --text-md-medium-font-style: normal;
+  --text-md-medium-font-weight: 500;
+  --text-md-medium-letter-spacing: 0px;
+  --text-md-medium-line-height: 24px;
+  --text-md-regular-font-family: "Inter", Helvetica;
+  --text-md-regular-font-size: 16px;
+  --text-md-regular-font-style: normal;
+  --text-md-regular-font-weight: 400;
+  --text-md-regular-letter-spacing: 0px;
+  --text-md-regular-line-height: 24px;
+  --text-md-semibold-font-family: "Inter", Helvetica;
+  --text-md-semibold-font-size: 16px;
+  --text-md-semibold-font-style: normal;
+  --text-md-semibold-font-weight: 600;
+  --text-md-semibold-letter-spacing: 0px;
+  --text-md-semibold-line-height: 24px;
+  --text-sm-medium-font-family: "Inter", Helvetica;
+  --text-sm-medium-font-size: 14px;
+  --text-sm-medium-font-style: normal;
+  --text-sm-medium-font-weight: 500;
+  --text-sm-medium-letter-spacing: 0px;
+  --text-sm-medium-line-height: 20px;
+  --text-sm-regular-font-family: "Inter", Helvetica;
+  --text-sm-regular-font-size: 14px;
+  --text-sm-regular-font-style: normal;
+  --text-sm-regular-font-weight: 400;
+  --text-sm-regular-letter-spacing: 0px;
+  --text-sm-regular-line-height: 20px;
+  --text-sm-semibold-font-family: "Inter", Helvetica;
+  --text-sm-semibold-font-size: 14px;
+  --text-sm-semibold-font-style: normal;
+  --text-sm-semibold-font-weight: 600;
+  --text-sm-semibold-letter-spacing: 0px;
+  --text-sm-semibold-line-height: 20px;
+  --text-xl-regular-font-family: "Inter", Helvetica;
+  --text-xl-regular-font-size: 20px;
+  --text-xl-regular-font-style: normal;
+  --text-xl-regular-font-weight: 400;
+  --text-xl-regular-letter-spacing: 0px;
+  --text-xl-regular-line-height: 30px;
+  --text-xl-semibold-font-family: "Inter", Helvetica;
+  --text-xl-semibold-font-size: 20px;
+  --text-xl-semibold-font-style: normal;
+  --text-xl-semibold-font-weight: 600;
+  --text-xl-semibold-letter-spacing: 0px;
+  --text-xl-semibold-line-height: 30px;
+  --white: rgba(255, 255, 255, 1);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Urbanist', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

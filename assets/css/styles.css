@@ -1,0 +1,152 @@
+/* Custom styles for the Rubies Micro Insurance website */
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom backdrop blur for testimonials */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.mobile-menu {
+    display: none;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobile-nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    color: #374151;
+    text-decoration: none;
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+
+/* Custom gradient backgrounds */
+.bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-t {
+    background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+/* Custom blur effects */
+.blur-xl {
+    filter: blur(24px);
+}
+
+.blur-2xl {
+    filter: blur(40px);
+}
+
+/* Testimonials carousel styling */
+#testimonials-carousel {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+#testimonials-carousel::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+/* Hover effects for buttons */
+button {
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* Custom shadow for cards */
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive font sizes */
+@media (max-width: 640px) {
+    .text-responsive {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .text-responsive {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .text-responsive {
+        font-size: 1.125rem;
+    }
+}
+
+/* Animation for loading states */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Custom spacing for mobile */
+@media (max-width: 640px) {
+    .mobile-spacing {
+        padding: 1rem;
+    }
+}
+
+/* Ensure proper aspect ratios for images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Custom focus states for accessibility */
+button:focus,
+a:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
