@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
+
     <script>
         tailwind.config = {
             theme: {
@@ -18,31 +19,34 @@
             }
         }
     </script>
+
 </head>
 <body class="font-sans bg-white">
     <div class="flex flex-col w-full min-h-screen bg-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 md:pt-10 pb-4 sm:pb-6 md:pb-8">
         <!-- Hero Section with Navigation -->
-        <section class="w-full relative overflow-hidden rounded-2xl sm:rounded-3xl mb-8 sm:mb-12 md:mb-16" style="background-color: #F7E3E7;">
+        <section class="hero-section w-full relative overflow-hidden rounded-2xl sm:rounded-3xl mb-4 sm:mb-6 md:mb-8" style="background-color: #F7E3E7;">
             <!-- Noise Texture Overlay -->
             <div class="absolute inset-0 opacity-20" style="background-image: url('assets/img/Noise & Texture.png'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
 
             <div class="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-12">
                 <!-- Navigation Bar -->
-                <nav class="flex items-center justify-between mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+                <nav class="navbar flex items-center justify-between mb-8 sm:mb-12 md:mb-16 lg:mb-20 relative z-20">
                     <!-- Logo -->
                     <div class="flex items-center">
                         <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-10 sm:h-12 md:h-14 w-auto">
                     </div>
 
-                    <!-- Navigation Menu -->
-                    <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+                    <!-- Desktop Navigation Menu -->
+                    <div class="hidden lg:flex items-center gap-6 xl:gap-8 relative z-20">
                         <a href="index.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Home</a>
+
                         <a href="about.html" class="font-medium text-sm xl:text-base relative z-30" style="color: #CB4662;">
                             About Us
                             <div class="absolute -bottom-1 left-0 w-full h-0.5 rounded-full" style="background-color: #CB4662;"></div>
                         </a>
+
                         <div class="relative group">
-                            <a href="products.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30 flex items-center gap-1">
+                            <a href="products.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors flex items-center gap-1">
                                 Products
                                 <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -50,7 +54,7 @@
                             </a>
 
                             <!-- Mega Menu Dropdown -->
-                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] drop-shadow-2xl">
+                            <div class="mega-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] drop-shadow-2xl">
                                 <div class="p-6">
                                     <div class="grid grid-cols-2 gap-4">
                                         <!-- Motorcycle/Tricycle -->
@@ -128,15 +132,29 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="media.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Media</a>
-                        <a href="claims.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Claims</a>
-                        <a href="contact.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors relative z-30">Contact</a>
+                        <a href="media.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Media</a>
+                        <a href="claims.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Claims</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-gray-900 font-medium text-sm xl:text-base transition-colors">Contact</a>
                     </div>
 
-                    <!-- CTA Button -->
-                    <button class="bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 text-xs sm:text-sm font-medium transition-colors">
+                    <!-- Mobile Menu Button & CTA -->
+                    <div class="flex items-center gap-3 lg:hidden">
+                        <button class="bg-black text-white px-3 py-2 rounded-full hover:bg-gray-800 text-xs font-medium transition-colors">
+                            Get Started →
+                        </button>
+                        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                            <span class="hamburger"></span>
+                            <span class="hamburger"></span>
+                            <span class="hamburger"></span>
+                        </button>
+                    </div>
+
+                    <!-- Desktop CTA Button -->
+                    <button class="hidden lg:block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 text-xs sm:text-sm font-medium transition-colors relative z-20">
                         Get Started →
                     </button>
+
+
                 </nav>
 
                 <!-- Page Title -->
@@ -498,11 +516,11 @@
                     <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
                         <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
                             <span class="mr-2">📞</span>
-                            +001 6520 698 00
+                            +234 812 110 3989
                         </button>
                         <button class="border border-gray-300 rounded-lg text-xs sm:text-sm px-3 sm:px-4 py-2 bg-white hover:bg-gray-50 transition-colors">
                             <span class="mr-2">✉️</span>
-                            support@rubiesmicroinsurance.com
+                            info@rubies.ng
                         </button>
                         <div class="flex gap-2 justify-center">
                             <button class="border border-gray-300 rounded-lg w-8 h-8 sm:w-10 sm:h-10 bg-white hover:bg-gray-50 transition-colors flex items-center justify-center">
@@ -523,7 +541,7 @@
                     <!-- Footer Links -->
                     <div class="flex flex-col lg:flex-row justify-between items-center w-full gap-4">
                         <p class="text-sm text-gray-500">
-                            © 2023 Rubies. All rights reserved.
+                            © 2025 Rubies. All rights reserved.
                         </p>
                         <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
                             <a href="about.html" class="text-sm text-gray-500 hover:text-gray-700 underline">
@@ -545,6 +563,114 @@
         </footer>
     </div>
 
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
+
+    <!-- Enhanced Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                    <img src="assets/img/Logo.svg" alt="Rubies Micro Insurance Logo" class="h-10 sm:h-12 md:h-14 w-auto">
+                </div>
+            </div>
+            <button class="mobile-close-btn" onclick="closeMobileMenu()">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu-content">
+            <a href="index.html" class="mobile-nav-link " onclick="closeMobileMenu()">Home</a>
+            <a href="about.html" class="mobile-nav-link active" onclick="closeMobileMenu()">About Us</a>
+
+            <!-- Mobile Products Dropdown -->
+            <div>
+                <button class="mobile-products-toggle" onclick="toggleMobileProducts()">
+                    <span>Products</span>
+                    <svg class="mobile-products-icon" id="mobileProductsIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <div class="mobile-products-menu" id="mobileProductsMenu">
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">🏍️</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Motorcycle/Tricycle</h4>
+                            <p>Insurance against accident</p>
+                        </div>
+                    </a>
+
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">🏠</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Tenant's Guarantee</h4>
+                            <p>Savings for rent</p>
+                        </div>
+                    </a>
+
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">🎓</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Edcare</h4>
+                            <p>Education coverage</p>
+                        </div>
+                    </a>
+
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">💳</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Credit Life</h4>
+                            <p>Creditor coverage</p>
+                        </div>
+                    </a>
+
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">🚗</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Travellers Policy</h4>
+                            <p>Travel accident coverage</p>
+                        </div>
+                    </a>
+
+                    <a href="claims.html" class="mobile-product-item" onclick="closeMobileMenu()">
+                        <div class="mobile-product-icon">
+                            <span class="text-white">🛡️</span>
+                        </div>
+                        <div class="mobile-product-details">
+                            <h4>Rubies Shield</h4>
+                            <p>Fire & burglary coverage</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="media.html" class="mobile-nav-link" onclick="closeMobileMenu()">Media</a>
+            <a href="claims.html" class="mobile-nav-link" onclick="closeMobileMenu()">Claims</a>
+            <a href="contact.html" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+
+            <div class="mobile-auth-buttons">
+                <button class="btn-signup">
+                    Get Started →
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         function toggleFAQ(index) {
             const content = document.getElementById(`faq-content-${index}`);
@@ -558,6 +684,78 @@
                 icon.textContent = '+';
             }
         }
+
+        // Enhanced Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const backdrop = document.getElementById('mobileMenuBackdrop');
+            const body = document.body;
+
+            if (mobileMenu && mobileMenuBtn && backdrop) {
+                const isOpen = mobileMenu.classList.contains('active');
+
+                if (isOpen) {
+                    // Close the menu
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('open');
+                    backdrop.classList.remove('active');
+                    body.classList.remove('menu-open');
+                } else {
+                    // Open the menu
+                    mobileMenu.classList.add('active');
+                    mobileMenuBtn.classList.add('open');
+                    backdrop.classList.add('active');
+                    body.classList.add('menu-open');
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const backdrop = document.getElementById('mobileMenuBackdrop');
+            const body = document.body;
+
+            if (mobileMenu && mobileMenuBtn && backdrop) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('open');
+                backdrop.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        }
+
+        function toggleMobileProducts() {
+            const productsMenu = document.getElementById('mobileProductsMenu');
+            const productsIcon = document.getElementById('mobileProductsIcon');
+
+            if (productsMenu && productsIcon) {
+                productsMenu.classList.toggle('active');
+                productsIcon.classList.toggle('rotated');
+            }
+        }
+
+        // Close menu when clicking on backdrop
+        document.addEventListener('DOMContentLoaded', function() {
+            const backdrop = document.getElementById('mobileMenuBackdrop');
+            if (backdrop) {
+                backdrop.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            // Close menu when window is resized to desktop size
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    closeMobileMenu();
+                }
+            });
+        });
     </script>
 </body>
 </html>

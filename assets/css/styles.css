@@ -11,35 +11,301 @@ html {
     -webkit-backdrop-filter: blur(4px);
 }
 
+/* Enhanced Mobile Menu Styles - Similar to Naira Invoice */
+.mobile-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
+}
+
+.mobile-menu-btn:focus {
+    outline: none;
+}
+
+.hamburger {
+    width: 30px;
+    height: 3px;
+    background: #1f2937;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: 1px;
+}
+
+.mobile-menu-btn.open .hamburger:first-child {
+    transform: rotate(45deg);
+    background: #1f2937;
+}
+
+.mobile-menu-btn.open .hamburger:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.mobile-menu-btn.open .hamburger:nth-child(3) {
+    transform: rotate(-45deg);
+    background: #1f2937;
+}
+
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Menu Container */
 .mobile-menu {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
     background: white;
-    border-top: 1px solid #e5e7eb;
+    overflow-y: auto;
 }
 
 .mobile-menu.active {
-    display: block;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Alternative slide-down style (comment out above and use this for slide-down effect) */
+/*
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+*/
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
 }
 
 .mobile-menu-content {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    padding: 0;
 }
 
 .mobile-nav-link {
     display: block;
-    width: 100%;
-    padding: 0.5rem 0;
+    padding: 1rem 1.5rem;
     color: #374151;
     text-decoration: none;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.mobile-nav-link:hover {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+.mobile-nav-link.active {
+    background-color: #fdf2f8;
+    color: #CB4662;
+    border-left: 4px solid #CB4662;
+}
+
+.mobile-products-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    color: #374151;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+}
+
+.mobile-products-toggle:hover {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+.mobile-products-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.mobile-products-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.mobile-products-menu {
+    background: #f9fafb;
+    display: none;
+}
+
+.mobile-products-menu.active {
+    display: block;
+}
+
+.mobile-product-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-product-item:hover {
+    background-color: #f3f4f6;
+}
+
+.mobile-product-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #CB4662;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.mobile-product-details h4 {
+    font-weight: 600;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.mobile-product-details p {
+    font-size: 12px;
+    color: #6b7280;
 }
 
 .mobile-auth-buttons {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.mobile-auth-buttons button {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+}
+
+.mobile-auth-buttons .btn-signup {
+    background-color: #000;
+    color: white;
+    border: none;
+}
+
+.mobile-auth-buttons .btn-signup:hover {
+    background-color: #374151;
+}
+
+/* Close button for mobile menu */
+.mobile-close-btn {
     display: flex;
-    gap: 1rem;
-    padding-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mobile-close-btn:hover {
+    background: #e5e7eb;
+}
+
+/* Ensure desktop menu is hidden on mobile */
+@media (min-width: 1024px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+    .mobile-menu {
+        display: none;
+    }
+    .mobile-menu-backdrop {
+        display: none;
+    }
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Navigation improvements */
+.navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Ensure hero section doesn't interfere */
+.hero-section {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -149,4 +415,94 @@ a:focus {
     .no-print {
         display: none !important;
     }
+}
+
+/* Z-Index Fix for Mega Menu Overlap Issue */
+
+/* Set proper z-index hierarchy */
+.navbar {
+    position: relative;
+    z-index: 1000; /* Keep navbar high but below mega menu */
+}
+
+/* Ensure hero section stays behind mega menu */
+.hero-section {
+    position: relative;
+    z-index: 1; /* Lower than navbar and mega menu */
+}
+
+/* Keep hero content behind mega menu */
+.hero-content {
+    position: relative;
+    z-index: 1; /* Same as hero section */
+}
+
+/* Mega menu should have the highest z-index */
+.mega-menu {
+    z-index: 9999 !important;
+    position: absolute;
+}
+
+/* Ensure mega menu appears above everything when hovered */
+.group:hover .mega-menu {
+    z-index: 9999 !important;
+}
+
+/* Alternative approach - you can use this instead of the above */
+/* This targets the mega menu more specifically using your existing structure */
+.group .absolute.top-full {
+    z-index: 9999 !important;
+}
+
+.group:hover .absolute.top-full {
+    z-index: 9999 !important;
+}
+
+/* Ensure navigation elements don't interfere */
+nav .relative {
+    z-index: auto; /* Reset any conflicting z-index */
+}
+
+/* Fix for any text elements that might overlap */
+.hero-section h1,
+.hero-section p,
+.hero-section div {
+    z-index: 1;
+}
+
+/* Make sure the mega menu container has proper stacking context */
+.group {
+    position: relative;
+    z-index: auto;
+}
+
+/* When group is hovered, ensure it creates proper stacking context */
+.group:hover {
+    z-index: 999;
+}
+
+/* Ensure the mega menu dropdown is above the hero section */
+.group:hover .absolute.top-full.left-1\/2 {
+    z-index: 9999 !important;
+}
+
+/* Additional fix for Tailwind's z-[100] class if it's not working */
+.z-\[100\] {
+    z-index: 9999 !important;
+}
+
+/* Ensure no other elements interfere with the mega menu */
+section {
+    position: relative;
+    z-index: auto;
+}
+
+/* Specific fix for the hero section with pink background */
+section[style*="background-color: #F7E3E7"] {
+    z-index: 1;
+}
+
+/* Make sure the noise texture overlay doesn't interfere */
+.absolute.inset-0 {
+    z-index: auto;
 }
